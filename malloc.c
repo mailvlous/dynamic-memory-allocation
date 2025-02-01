@@ -1,64 +1,69 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int* createArray(int size) {
-    int* array = malloc(sizeof(int) * size);
+// int* createArray(int size) {
+//     int* array = malloc(sizeof(int) * size);
 
-    if (array == NULL) {
-        return NULL;
-    }
+//     if (array == NULL) {
+//         return NULL;
+//     }
     
-    for (int i = 0; i < size; i++) {
-        array[i] = i;
-    }
+//     for (int i = 0; i < size; i++) {
+//         array[i] = i;
+//     }
 
-    return array;
-}
+//     return array;
+// }
 
 int main() {
 
-    int size = 10;
-    int count = 0;
-
-    int* array = createArray(size); 
-
-    for (int i = 0; i < size; i++) {
-        printf("%d\n", array[i]);
-        count++;
-    }
-
-    free(array);
-
-    // int count = 0;
     // int size = 10;
-    // int* array = malloc(sizeof(int) * size);
+    // int count = 0;
 
-    // if (array == NULL) {
-    //     printf("Memory allocation failed\n");
-    //     return 1;
-    // }
-
-    // size++;
-    // int* temp = realloc(array, sizeof(int) * size);
-    // if(temp == NULL) {
-    //     printf("Memory reallocation failed\n");
-    //     return 1;
-    // } else {
-    //     array = temp;
-    // }
+    // int* array = createArray(size); 
 
     // for (int i = 0; i < size; i++) {
-    //     array[i] = i;
+    //     printf("%d\n", array[i]);
     //     count++;
     // }
 
-    // for (int i = 0; i < count; i++) {
-    //     printf("%d", array[i]);
-    // }
-    
     // free(array);
 
+    int count = 0;
+    int size = 6;
+    int* array = malloc(sizeof(int) * size);
 
+    if (array == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+
+    size++;
+
+    int* temp = realloc(array, sizeof(int) * size);
+
+    if(temp == NULL) {
+        printf("Memory reallocation failed\n");
+        return 1;
+    } else {
+        array = temp;
+    }
+
+    printf("New size: %d\n", size);
+
+
+    for (int i = 0; i < size; i++) {
+        array[i] = i;
+        count++;
+    }
+
+        printf("%d\n", count);
+
+    for (int i = 0; i < count; i++) {
+        printf("%d", array[i]);
+    }
+    
+    free(array);
 
     return 0;
 }
